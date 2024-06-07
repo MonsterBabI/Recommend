@@ -49,8 +49,8 @@ genres_multi_hot将每个类别（字符串）以‘|’进行分割，获得对
 ```
 
 ### 数据处理展示  
-![h:200 w:800](image.png)  
-![h:220 w:800](image-1.png)
+![h:200 w:800](https://github.com/Zerone-yang/Recommend/blob/main/img/image.png)  
+![h:220 w:800](https://github.com/Zerone-yang/Recommend/blob/main/img/image-1.png)
 
 
 ### 自定义数据集
@@ -75,7 +75,7 @@ class MovieLensDataset(Dataset):
 
 ## 模型架构设计
 
-![bg right h:600 w:500](模型框架.png)
+![bg right h:600 w:500](https://github.com/Zerone-yang/Recommend/blob/main/img/%E6%A8%A1%E5%9E%8B%E6%A1%86%E6%9E%B6.png)
 
 * 整体设计
 UserNetworkFeature：根据用户数据提取用户特征矩阵，尺寸n x embed
@@ -83,16 +83,13 @@ MovieNetworkFeature：根据电影数据提取电影特征矩阵，尺寸n x emb
 RecommenderNetwork：将用户特征和电影特征点积获得匹配度矩阵,n x n
 
 * 用户特征矩阵
-![bg right h:600 w:500](模型框架.png)
 user_data的每个特征都是一个int类型，即（batch，1）当经过Embedding层后获得（batch,emb），然后将每个特征分别经过一个全连接层，再将四个特征拼接（cat）在一起，再经过一个全连接层，获得最终的用户特征矩阵（batch,emb）
 
 * 电影特征矩阵
-![bg right h:600 w:500](模型框架.png)
 movie_data共两个特征，id为int类型，即（batch,1）genre为Multi-hot编码向量，为（batch, 18）
 id经过Embeding层后接入一个全连接层，genre则直接接入全连接层，然后同样将两者拼接，经过全连接层后获得电影特征矩阵。
  
 * 匹配度矩阵
-![bg right h:600 w:500](模型框架.png)
 U_feature: batch x emb
 M_feature: batch x emb
 将两者在行方向进行Softmax后分别乘以一个温度常数，之后将两者点积，获得匹配度矩阵
@@ -120,7 +117,7 @@ loss = (loss_m + loss_u)/2
 3. 对于匹配度矩阵的设计还太简陋，应该寻找相关论文使用其他方法来代替。
  
 ## GUI界面设计
-![bg right h:600 w:600](image-3.png)
+![bg right h:600 w:600](https://github.com/Zerone-yang/Recommend/blob/main/img/image-3.png)
 该界面使用tkinter设计，共有三个功能
 1. 根据用户登录的id和所设定的推荐数量，推荐用户可能感兴趣的电影
 2. 用户可以自主选择推荐电影的模型算法
