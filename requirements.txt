@@ -1,0 +1,5 @@
+gensim==4.3.2
+numpy==1.24.4
+pandas==1.5.3
+torch==2.0.1+cu117
+tqdm==4.66.2
